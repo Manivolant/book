@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <title>web</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                font-family: Verdana;
+                font-size: 3.3vw;
+            }
+            :root{
+                --book1:#D71820;
+                --book2:#52A27B;
+                --book3:#FDE53B;
+                --book4:#E98419;
+            }
+            html{
+                scroll-snap-type: y mandatory;
+                scroll-behavior: smooth
+            }
+            body{
+                background-color: var(--book1);
+                transition: all ease 0.5s;
+            }
+            .title{
+                position: fixed;
+                left: 3vw;
+                top: 3vw;
+                font-weight: bold;
+                letter-spacing: -0.22vw;
+                font-size: 6.3vw;
+                color: var(--text1);
+            }
+            .email{
+                position: fixed;
+                right: 3vw;
+                top: 4.5vw;
+            }
+            .book {
+                width: 100vw;
+                height: 100vh;
+                background-color: transparent;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                scroll-snap-align: start;
+                flex-direction: column;
+                gap: 3vw;
+            }
+            .book img{
+                width: 35vh;
+                height: auto;
+                border-top-left-radius: 3vh;
+                border-top-right-radius: 3vh;
+                box-shadow: 0px 0px 2vh rgba(0,0,0,0.4);
+            }
+            .book button{
+                width: 35vh;
+                height: 7vh;
+                border-bottom-left-radius: 3vh;
+                border-bottom-right-radius: 3vh;
+                border: none;
+                font-size: 3.5vw;
+                font-weight: bold;
+                box-shadow: 0px 0px 10vw rgba(0,0,0,0.4);
+                opacity: 1;
+                cursor: pointer;
+                transition: all ease 0.2s;
+            }
+            .book button{
+                opacity: 0.9;
+            }
+            .info{
+                width: 15vw;
+                height: 30vw;
+                background-color: rgba(0,0,0,0.5);
+                position: fixed;
+                left: 3vw;
+                bottom: 3vw;
+                color: white;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                backdrop-filter: blur(5px);
+                border-radius: 1.2vw;
+                padding: 0.9vw;
+                justify-content: start;
+                align-items: center;
+                gap: 5.1vw;
+            }
+            .info span{
+                position: relative;
+            }
+            .info span div{
+                width: 0%;
+                height: 0.3vw;
+                background-color: white;
+                position: absolute;
+                bottom: -0.2vw;
+                transition: all ease 0.2s;
+            }
+            #d1{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <span class="title">KETABRah</span>
+        <span class="email">maninasiri987@gmail.com</span>
+        <div id="b1" class="book">
+            <img src="./book1.jpg"/>
+            <button style="background-color: var(--book1);">BUY</button>
+        </div>
+        <div id="b2" class="book">
+            <img src="./book2.jpg"/>
+            <button style="background-color: var(--book2);">BUY</button>
+        </div>
+        <div id="b3" class="book">
+            <img src="./book3.jpg"/>
+            <button style="background-color: var(--book3);">BUY</button>
+        </div>
+        <div id="b4" class="book">
+            <img src="./book4.jpg"/>
+            <button style="background-color: var(--book4);">BUY</button>
+        </div>
+        <div class="info">
+            <span onclick="window.scrollTo(0,vh2px(0));">book1<div id="d1"></div></span>
+            <span onclick="window.scrollTo(0,vh2px(95));">book2<div id="d2"></div></span>
+            <span onclick="window.scrollTo(0,vh2px(195));">book3<div id="d3"></div></span>
+            <span onclick="window.scrollTo(0,vh2px(295));">book4<div id="d4"></div></span>
+            <div></div>
+        </div>
+        <script>
+            function vh2px(num){
+                return (num / 100) * window.innerHeight
+            }
+            window.addEventListener("scroll",()=>{
+                if (window.pageYOffset >= vh2px(95)){
+                    document.body.style.backgroundColor = "var(--book2)";
+                    document.querySelector("#d2").style.width = "100%";
+                    document.querySelector("#d1").style.width = "0%";
+                    document.querySelector("#d3").style.width = "0%";
+                    document.querySelector("#d4").style.width = "0%";
+                }
+                if(window.pageYOffset >= vh2px(195)){
+                    document.body.style.backgroundColor = "var(--book3)";
+                    document.querySelector("#d3").style.width = "100%";
+                    document.querySelector("#d1").style.width = "0%";
+                    document.querySelector("#d2").style.width = "0%";
+                    document.querySelector("#d4").style.width = "0%";
+                }
+                if (window.pageYOffset >= vh2px(295)){
+                    document.body.style.backgroundColor = "var(--book4)";
+                    document.querySelector("#d4").style.width = "100%";
+                    document.querySelector("#d1").style.width = "0%";
+                    document.querySelector("#d2").style.width = "0%";
+                    document.querySelector("#d3").style.width = "0%";
+                }
+                if (window.pageYOffset == vh2px(0)){
+                    document.body.style.backgroundColor = "var(--book1)";
+                    document.querySelector("#d1").style.width = "100%";
+                    document.querySelector("#d2").style.width = "0%";
+                    document.querySelector("#d3").style.width = "0%";
+                    document.querySelector("#d4").style.width = "0%";
+                }
+            });
+        </script>
+    </body>
+</html>
